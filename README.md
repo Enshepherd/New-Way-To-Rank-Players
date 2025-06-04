@@ -9,9 +9,12 @@ In this file you will find one file of Raw data, two files of cleaned data (Play
 
 To view the data, ensure that you have microsoft excel.
 You can view the code three seperate ways. 
-First, You can download R and then Rstudio.
-Second, You can download Anaconda and use the built in R add-on.
-Third, You can download VS code (or an equivalent). 
+
+First, You can download R and then Rstudio (see https://www.r-project.org/).
+
+Second, You can download Anaconda and use the built in R add-on (see https://www.anaconda.com/download).
+
+Third, You can download VS code (or an equivalent, https://code.visualstudio.com/download ). 
 
 ***Final Comments***
 
