@@ -1,0 +1,56 @@
+---
+title: "Assists ranking code"
+author: "Elijah Shepherd"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+
+```{r}
+library(readxl)
+Assists <- read_excel("Assists.xlsx")
+```
+
+```{r}
+Transpose_assists <- t(Assists)
+```
+
+```{r}
+# Identify rows that contain non-numeric values
+numeric_rows <- apply(Transpose_assists, 1, function(row) all(suppressWarnings(!is.na(as.numeric(row)))))
+
+# Keep only numeric rows
+A_numeric <- Transpose_assists[numeric_rows, , drop = FALSE]
+
+# Convert to numeric matrix
+A <- matrix(as.numeric(A_numeric), nrow = sum(numeric_rows))
+```
+
+```{r}
+row_sums <- rowSums(A)
+```
+
+```{r}
+# Normalize each row by its corresponding sum
+s <- A / row_sums
+```
+
+```{r}
+ones <- matrix(1, nrow = 29, ncol = 1)
+one_fourths <- matrix(1/29, nrow = 1, ncol = 29)
+v <- ones %*% one_fourths
+G_1 <- 0.85 * s + 0.15 * v
+```
+
+
+```{r}
+library(fastmatrix)
+power <- power.method(t(G_1), only.value = FALSE, maxiter = 100, tol = 1e-10)
+```
+
+```{r}
+library(ohenery)
+pagerank_2 <- normalize(power$vector)
+pagerank_2
+```
+

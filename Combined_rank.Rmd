@@ -1,0 +1,22 @@
+---
+title: "Trying to merge"
+author: "Elijah Shepherd"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+G_combined <- 0.7*G_1 + 0.3*G_2
+```
+
+```{r}
+library(fastmatrix)
+power_combined <- power.method(t(G_combined), only.value = FALSE, maxiter = 100, tol = 1e-10)
+```
+
+```{r}
+library(ohenery)
+pagerank_combined <- as.matrix(normalize(power_combined$vector))
+pagerank_combined
+```
+
