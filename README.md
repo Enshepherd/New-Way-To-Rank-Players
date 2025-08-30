@@ -1,4 +1,4 @@
-# Personal-Projects
+# NBA Player Rank: A new way to rank players
 ***Introduction***
 
 This repository contains the code, data, and finished product of a data science driven project I completed about a month ago.
